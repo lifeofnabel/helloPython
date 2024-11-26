@@ -1,11 +1,12 @@
 from hellopython.BANK_ACCOUNT import BANK_ACCOUNT
+from hellopython.main import account
 
 
 class USERS:
     def __init__(self, name, id):
-        self.users = {}
         self.name = name
         self.id = id
+        self.accounts = []
 
     def add_user(self, user):
         self.users[user.id] = user
@@ -25,22 +26,15 @@ class USERS:
     def __str__(self):
         return str(self.users)
 
-    def get_accounts(self, user_id):
-        # return all accounts of the user from the list
-        return self.users[user_id].accounts
+    def get_accounts(self):
+        return self.accounts
 
-    def createNewAccount(self, user, iban, bic, email, start_balance):
-        # Create a new account
-        # create new object of BANK_ACCOUNT
-        # object of bank account needs a user_id, iban, bic, email, start_balance
-        # add the object to the user
-        # return the object
-        account = BANK_ACCOUNT.BANK_ACCOUNT(user.id, iban, bic, email, start_balance)
-        user.add_account(account)
+    def create_new_account(self, iban, bic, email, start_balance):
+        account = BANK_ACCOUNT(self.id, iban, bic, email, start_balance)
+        self.accounts.append(account)
         return account
 
-    def toString(self):
-        return self.name, self.id, self.users
-        pass
+    def to_string(self):
+        return f"User: {self.name}, ID: {self.id}, Accounts: {[account.to_string() for account in self.accounts]}"
 
 
