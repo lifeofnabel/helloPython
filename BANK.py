@@ -1,6 +1,6 @@
 class BANK:
     def __init__(self, name):
-        self.name = name
+        self.name: str = name
         self.users = {}  # Benutzer speichern mit ID als Schlüssel
 
     def add_user(self, user):

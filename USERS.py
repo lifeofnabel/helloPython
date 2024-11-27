@@ -4,8 +4,8 @@ from hellopython.main import account
 
 class USERS:
     def __init__(self, name, id):
-        self.name = name
-        self.id = id
+        self.name: str = name
+        self.id: str = id
         self.accounts = []
 
     def add_user(self, user):
@@ -30,7 +30,7 @@ class USERS:
         return self.accounts
 
     def create_new_account(self, iban, bic, email, start_balance):
-        account = BANK_ACCOUNT(self.id, iban, bic, email, start_balance)
+        account: BANK_ACCOUNT = BANK_ACCOUNT(self.id, iban, bic, email, start_balance)
         self.accounts.append(account)
         return account
 
