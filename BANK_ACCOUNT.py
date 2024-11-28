@@ -25,3 +25,6 @@ class BANK_ACCOUNT:
             return True
         else:
             return False
+
+    def to_string(self):
+        return f"IBAN: {self.iban}, BIC: {self.bic}, Email: {self.email}, Balance: {self.balance}, Transactions: {self.transactions}"
