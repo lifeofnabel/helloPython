@@ -12,3 +12,16 @@ class BANK_ACCOUNT:
     @classmethod
     def BANK_ACCOUNT(cls, id, iban, bic, email, start_balance):
         pass
+
+    def get_balance(self):
+        return self.balance
+
+    def send_money(self, amount, receiver):
+        if self.balance >= amount:
+            self.balance -= amount
+            receiver.balance += amount
+            self.transactions.append(f"Sent {amount} to {receiver.user_id}")
+            receiver.transactions.append(f"Received {amount} from {self.user_id}")
+            return True
+        else:
+            return False
