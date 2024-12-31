@@ -3,27 +3,40 @@ from USERS import USERS
 from CASH_MASCHINE import CASH_MASCHINE
 from BANK_ACCOUNT import BANK_ACCOUNT
 
+# Create a bank instance
 bank = BANK("Sparkasse")
-print("Bank erstellt!")
+print("Bank created!")
+
+# Create users
 user = USERS("JAMILA", 1)
-print("User erstellt!")
+print("User created!")
 user2 = USERS("JAMIL", 2)
-print("User2 erstellt!")
+print("User2 created!")
 
-user.createNewAccount(user, "DE37", "SLS1", "n@g", 100)
-print("Account erstellt!")
-user2.createNewAccount(user2, "DE73", "SLS2", "j@j", 200)
-print("Account2 erstellt!")
+# Create accounts for users
+account1 = user.create_new_account("DE37", "SLS1", "n@g", 100)
+print("Account created for User 1!")
+account2 = user2.create_new_account("DE73", "SLS2", "j@j", 200)
+print("Account created for User 2!")
 
-account2 = user2.get_accounts(2)
-print("Account2 gegettet: ", account2)
-print("Account2 Balance: ", account2.balance)
-account = user.get_accounts(1)
-print("Account gegettet: ", account)
-print("Account Balance: ", account.balance)
+# Add users to the bank
+bank.add_user(user)
+bank.add_user(user2)
 
+# Retrieve specific accounts
+retrieved_account1 = user.get_accounts()[0]
+print("Retrieved Account 1:", retrieved_account1.to_string())
+print("Account 1 Balance:", retrieved_account1.balance)
 
-print("Setup abgeschlossen!")
-print(user.toString())
-print(bank.toString())
+retrieved_account2 = user2.get_accounts()[0]
+print("Retrieved Account 2:", retrieved_account2.to_string())
+print("Account 2 Balance:", retrieved_account2.balance)
 
+# Display setup summary
+print("Setup completed!")
+print(user.to_string())
+print(bank.to_string())
+
+# Perform counting_down task
+print("Task: Counting Down")
+bank.counting_down()
