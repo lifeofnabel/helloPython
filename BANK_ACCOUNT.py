@@ -23,6 +23,7 @@ class BANK_ACCOUNT:
             receiver.transactions.append(f"Received {amount} from {self.iban}")
             return True
         else:
+            print("No enough Money!")
             return False
 
     def add_transaction(self, description: str):
